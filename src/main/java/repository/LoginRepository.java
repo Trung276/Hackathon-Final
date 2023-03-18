@@ -1,6 +1,6 @@
 package repository;
 
-import connection.DBConnection;
+import connection.JdbcConnection;
 import model.User;
 
 import java.sql.Connection;
@@ -13,7 +13,7 @@ public class LoginRepository {
 
     public User login(String username, String password) {
         User user = null;
-        Connection connection = DBConnection.getConnection();
+        Connection connection = JdbcConnection.getConnection();
         try {
             PreparedStatement statement = connection.prepareStatement(LOGIN_SUCCESS);
             statement.setString(1,username);
