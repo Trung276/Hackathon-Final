@@ -22,13 +22,14 @@
 <body>
 <div class="container">
     <div>
-        <form action="/home" method="get">
-            <input type="submit">
+        <form action="/HomeServlet" method="get">
+            <input type="submit">PHUI CONNECT
         </form>
     </div>
-    <div class="logo" style="display: flex; align-items: center; justify-content: space-between; width: 20%; padding: 20px; background-color: #e0e0e0;">
-        <a href="dashboard.jsp"><img src="logo.png"></a>
-        <p style="margin-left: auto; margin-right: 0;">Your account</p>
+    <div>
+        <form action="/InformationUserServlet" method="get">
+            <input type="submit">YOUR ACCOUNT
+        </form>
     </div>
 </div>
 <div class="search">
