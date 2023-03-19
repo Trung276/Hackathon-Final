@@ -1,7 +1,7 @@
-package com.example.hackathonc11phuiconnection.controller;
+package controller;
 
-import com.example.hackathonc11phuiconnection.connection.JdbcConnection;
-import com.example.hackathonc11phuiconnection.model.Matchup;
+import connection.JdbcConnection;
+import model.Matchup;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
