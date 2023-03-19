@@ -6,15 +6,16 @@ import java.sql.SQLException;
 
 public class JdbcConnection {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String CONN_URL = "jdbc:mysql://localhost:3306/users";
+    private static final String CONN_URL = "jdbc:mysql://localhost:3306/hackathon";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "";
+    private static final String PASSWORD = "270607";
 
     public static Connection getConnection() {
-        Connection connection = null;
+        Connection connection;
         try {
             Class.forName(DRIVER);
             connection = DriverManager.getConnection(CONN_URL, USERNAME, PASSWORD);
+            return connection;
         } catch (ClassNotFoundException e) {
             System.out.println("Could not find driver for jdbc connection!");
             e.printStackTrace();
@@ -22,6 +23,6 @@ public class JdbcConnection {
             System.out.println("Could not find database!");
             e.printStackTrace();
         }
-        return connection;
+        return null;
     }
 }

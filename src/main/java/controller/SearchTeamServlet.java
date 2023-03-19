@@ -13,16 +13,11 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "SearchTeamServlet", value = {"/", "/SearchTeamServlet"})
+@WebServlet(name = "SearchTeamServlet", value = {"/search"})
 public class SearchTeamServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getServletPath();
-        switch (action) {
-            case "/":
-            case "/SearchTeamServlet":
-                request.getRequestDispatcher("/WEB-INF/search.jsp").forward(request, response);
-        }
+        request.getRequestDispatcher("/WEB-INF/search.jsp").forward(request, response);
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,4 +1,4 @@
-package com.example.hackathonc11phuiconnection.model;
+package model;
 
 import java.time.LocalDateTime;
 
