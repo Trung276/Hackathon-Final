@@ -18,7 +18,7 @@ public class TeamServices {
     public List<Team> getAllTeams() throws SQLException {
         List<Team> teams = new ArrayList<>();
         String query = "SELECT * FROM team";
-        PreparedStatement stmt = connection.prepareStatement(query);
+        PreparedStatement stmt = connection.prepareStatement(query) +"đâsdasdasds";
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
