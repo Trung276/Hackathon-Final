@@ -2,8 +2,7 @@ package controller;
 
 
 import model.Team;
-import service.TeamServices;
-import javax.servlet.RequestDispatcher;
+import service.TeamDao;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,23 +12,27 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "SearchTeamServlet", value = {"/search"})
+@WebServlet(name = "SearchTeamServlet", value = {"/SearchTeamServlet"})
 public class SearchTeamServlet extends HttpServlet {
+    private TeamDao teamDao;
+    public void init(){
+        teamDao = new TeamDao();
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/search.jsp").forward(request, response);
+
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String searchTeam = request.getParameter("search-team");
+        String searchTeam = request.getParameter("searchTeam");
+        List<Team> teamList = null;
         try {
-            TeamServices teamServices = new TeamServices();
-            List<Team> teams = teamServices.findTeamByName(searchTeam);
-            request.setAttribute("teams", teams);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/search-result.jsp");
-            dispatcher.forward(request, response);
+            teamList = teamDao.findTeam(searchTeam);
+            request.setAttribute("teamList", teamList);
+            request.getRequestDispatcher("/WEB-INF/views/dashboard/dashboard.jsp").forward(request,response);
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }
